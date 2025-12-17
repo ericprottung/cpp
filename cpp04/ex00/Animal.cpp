@@ -6,7 +6,7 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:26:38 by eprottun          #+#    #+#             */
-/*   Updated: 2025/12/01 11:56:19 by eprottun         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:02:29 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Animal::Animal(const Animal& other) {
 	type = other.type;
 }
 
-Animal& Animal::operator+(const Animal& other) {
+Animal& Animal::operator=(const Animal& other) {
 	type = other.type;
 	return *this;
 }

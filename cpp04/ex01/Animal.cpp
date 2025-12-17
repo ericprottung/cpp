@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/01 10:56:51 by eprottun          #+#    #+#             */
-/*   Updated: 2025/12/09 14:02:34 by eprottun         ###   ########.fr       */
+/*   Created: 2025/12/01 11:26:38 by eprottun          #+#    #+#             */
+/*   Updated: 2025/12/09 14:02:52 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#include "Animal.hpp"
 
-#include <iostream>
+Animal::Animal() {
+	
+}
 
-using std::string;
-using std::endl;
-using std::cout;
+Animal::Animal(const Animal& other) {
+	type = other.type;
+}
 
-class Animal {
-	public :
-		Animal();
-		Animal(const Animal& other);
-		Animal& operator=(const Animal& other);
-		~Animal();
+Animal& Animal::operator=(const Animal& other) {
+	type = other.type;
+	return *this;
+}
 
-		virtual void	makeSound() const;
-		string	getType() const;
-	protected :
-		string type;
-}	;
+Animal::~Animal() {}
 
-#endif
+string	Animal::getType() const {
+	return type;
+}
+
+void	Animal::makeSound() const {
+	cout << "I shouldn't make a sound" << endl;
+}

@@ -6,7 +6,7 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:45:18 by eprottun          #+#    #+#             */
-/*   Updated: 2025/12/08 20:37:42 by eprottun         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:02:52 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ WrongCat::WrongCat(const WrongCat& other) {
 	type = other.type;
 }
 
-WrongCat& WrongCat::operator+(const WrongCat& other) {
+WrongCat& WrongCat::operator=(const WrongCat& other) {
 	type = other.type;
 	return *this;
 }

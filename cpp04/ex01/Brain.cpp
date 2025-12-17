@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/01 10:56:51 by eprottun          #+#    #+#             */
-/*   Updated: 2025/12/09 14:02:34 by eprottun         ###   ########.fr       */
+/*   Created: 2025/12/09 12:43:50 by eprottun          #+#    #+#             */
+/*   Updated: 2025/12/09 14:02:52 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#include "Brain.hpp"
 
-#include <iostream>
+Brain::Brain() {
+	
+}
 
-using std::string;
-using std::endl;
-using std::cout;
+Brain::Brain(const Brain& other) {
+	for (size_t i = 0; i < 100; i++)
+	{
+		this->ideas[i] = other.ideas[i];
+	}
+}
 
-class Animal {
-	public :
-		Animal();
-		Animal(const Animal& other);
-		Animal& operator=(const Animal& other);
-		~Animal();
+Brain& Brain::operator=(const Brain& other) {
+	type = other.type;
+	return *this;
+}
 
-		virtual void	makeSound() const;
-		string	getType() const;
-	protected :
-		string type;
-}	;
+Brain::~Brain() {}
 
-#endif
+string	Brain::getType() const {
+	return type;
+}
+
+void	Brain::makeSound() const {
+	cout << "I shouldn't make a sound" << endl;
+}
