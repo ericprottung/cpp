@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 #include <string>
 
 int main(int ac, char **argv) {
@@ -15,7 +14,6 @@ int main(int ac, char **argv) {
             str[j] = std::toupper(str[j]);
         }
         std::cout << str;
-
     }
     std::cout << std::endl;
     return (0);

@@ -1,9 +1,9 @@
-NAME = megaphone
+NAME = submission
 CC = c++
-OBJ_DIR = obj
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = megaphone.cpp
+CFLAGS = -Wall -Wextra -Werror -MMD -I. -std=c++98
+SRC = Account.cpp tests.cpp
 OBJ = $(SRC:%.cpp=%.o)
+DEP = $(OBJ:%.o=%.d)
 
 all: $(NAME)
 
@@ -14,10 +14,12 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(DEP)
 
 fclean: clean
 	rm -f $(NAME)
+
+-include : $(DEP)
 
 re: fclean all
 

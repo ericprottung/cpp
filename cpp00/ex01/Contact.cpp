@@ -6,7 +6,7 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:38:33 by eprottun          #+#    #+#             */
-/*   Updated: 2025/11/20 15:15:02 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/05 14:35:58 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int Contact::setField(const string &prompt, string &field)
 	std::string input;
 	
 	cout << prompt;
-	if (!getline(std::cin, input))
+	if (!getline(cin, input))
 		return (cout << endl, -1);
 	while (input.empty())
 	{
 		cout << "Input empty! Try again: ";
-		if (!getline(std::cin, input))
+		if (!getline(cin, input))
 			return (cout << endl, -1);
 	}
 	field = input;
