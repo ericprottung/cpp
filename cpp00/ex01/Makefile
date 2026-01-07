@@ -1,7 +1,7 @@
 NAME = phonebook
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -MMD -I. -std=c++98
-SRC = Phonebook.cpp Contact.cpp
+SRC = Phonebook.cpp Contact.cpp main.cpp
 OBJ = $(SRC:%.cpp=%.o)
 DEP = $(OBJ:%.o=%.d)
 
@@ -19,7 +19,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
--include : $(DEP)
+-include $(DEP)
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 17:33:32 by eprottun          #+#    #+#             */
-/*   Updated: 2025/11/20 15:14:12 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/06 17:17:38 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 #include <iostream>
 
 using std::cout;
-using std::getline;
 using std::string;
 using std::endl;
+
+PhoneBook::PhoneBook() {
+	total_entries = 0;
+}
 
 int	PhoneBook::addContact() {
 	Contact	add;
@@ -29,7 +32,7 @@ int	PhoneBook::addContact() {
 	return (0);
 }
 
-static void	print_cell(string content) {
+static void	print_cell(const string& content) {
 	if (content.size() <= 10)
 	{
 		for (size_t i = 0; i < 10 - content.size(); i++)
@@ -59,7 +62,7 @@ void	PhoneBook::displayTable() {
 	cout << endl;
 }
 
-static int	getIndex(int amount) {
+int	PhoneBook::getIndex(int amount) {
 	string input;
 
 	cout << "Enter index for contact information: ";
@@ -94,34 +97,5 @@ int	PhoneBook::displayContact() {
 	cout << "PHONE NUMBER: " << this->contacts[index].get_phone_number() << endl;
 	cout << "DARKEST SECRET: " << this->contacts[index].get_darkest_secret() << endl;
 	cout << endl;
-	return (0);
-}
-
-int main(void)
-{
-	PhoneBook phonebook;
-	string input;
-	
-	while (1)
-	{
-		cout << "Would you like to ADD, SEARCH or EXIT?" << endl;
-		if (!getline(std::cin, input))
-			return (0);
-		if (input == "ADD")
-		{
-			if (phonebook.addContact() == -1)
-				return (0);
-		}
-		else if (input == "SEARCH")
-		{
-			phonebook.displayTable();
-			if (phonebook.displayContact() == -1)
-				return (0);
-		}
-		else if (input == "EXIT")
-			return (0);
-		else
-			cout << endl << "Input not valid!" << endl << endl;
-	}
 	return (0);
 }
