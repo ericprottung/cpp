@@ -1,7 +1,7 @@
-NAME = account
+NAME = harlfilter
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -MMD -I. -std=c++98
-SRC = Account.cpp tests.cpp
+SRC = main.cpp Harl.cpp
 OBJ = $(SRC:%.cpp=%.o)
 DEP = $(OBJ:%.o=%.d)
 
@@ -19,7 +19,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
--include $(DEP)
+-include : $(DEP)
 
 re: fclean all
 

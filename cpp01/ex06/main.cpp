@@ -6,12 +6,11 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 18:26:10 by eprottun          #+#    #+#             */
-/*   Updated: 2026/01/07 11:27:04 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/07 12:04:15 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
-#include <ostream>
 
 int main(){
 	std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR", "KETCHUP", "MAYO"};

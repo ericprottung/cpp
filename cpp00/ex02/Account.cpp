@@ -6,7 +6,7 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:19:23 by eprottun          #+#    #+#             */
-/*   Updated: 2026/01/06 12:34:54 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/07 15:47:38 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,24 @@ void	Account::_displayTimestamp() {
 	tm = localtime(&now);
 	std::cout << "[" << tm->tm_year + 1900;
 	if (tm->tm_mon + 1 < 10)
-		std::cout << 0 << tm->tm_mon + 1;
+		std::cout << "0" << tm->tm_mon + 1;
 	else
 		std::cout << tm->tm_mon + 1;
 	if (tm->tm_mday < 10)
-		std::cout << 0 << tm->tm_mday;
+		std::cout << "0" << tm->tm_mday;
 	else
 		std::cout << tm->tm_mday;
 	std::cout << "_";
 	if (tm->tm_hour < 10)
-		std::cout << 0 << tm->tm_hour;
+		std::cout << "0" << tm->tm_hour;
 	else
 		std::cout << tm->tm_hour;
 	if (tm->tm_min < 10)
-		std::cout << 0 << tm->tm_min;
+		std::cout << "0" << tm->tm_min;
 	else
 		std::cout << tm->tm_min;
 	if (tm->tm_sec < 10)
-		std::cout << 0 << tm->tm_sec;
+		std::cout << "0" << tm->tm_sec;
 	else
 		std::cout << tm->tm_sec;
 	std::cout << "] ";

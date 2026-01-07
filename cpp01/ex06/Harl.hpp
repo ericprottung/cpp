@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/26 18:26:10 by eprottun          #+#    #+#             */
-/*   Updated: 2026/01/07 11:27:04 by eprottun         ###   ########.fr       */
+/*   Created: 2025/11/26 17:28:43 by eprottun          #+#    #+#             */
+/*   Updated: 2025/11/26 17:38:57 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
-#include <ostream>
+#ifndef HARL_HPP
+# define HARL_HPP
 
-int main(){
-	std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR", "KETCHUP", "MAYO"};
-	Harl harl;
-	for (size_t i = 0; i < 6; i++)
-	{
-		int j = i % 6;
-		harl.complain(levels[j]);
-		cout << std::endl;
-	}
-	return 0;
-}
+# include <iostream>
+
+using std::string;
+using std::cout;
+using std::endl;
+
+class Harl {
+	public :
+		void complain( std::string level );
+	private :
+		void debug( void );
+		void info( void );
+		void warning( void );
+		void error( void );
+}	;
+#endif
