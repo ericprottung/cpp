@@ -6,11 +6,15 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:12:32 by eprottun          #+#    #+#             */
-/*   Updated: 2025/11/26 16:58:18 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/07 18:03:53 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "StringReplace.hpp"
+
+#include <iostream>
+#include <fstream>
+#include <sstream>
 
 using std::string;
 

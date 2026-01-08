@@ -6,12 +6,25 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:47:37 by eprottun          #+#    #+#             */
-/*   Updated: 2025/11/25 17:49:23 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/07 18:13:48 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
+#include <iostream>
+
+Zombie::Zombie() {
+}
+
+Zombie::Zombie(std::string name) {
+	this->name = name;
+}
+
+Zombie::~Zombie() {
+	std::cout << this->name << " died!" << std::endl;
+}
+		
 void	Zombie::announce() {
 	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

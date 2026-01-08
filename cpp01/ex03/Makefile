@@ -19,7 +19,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
--include : $(DEP)
+-include $(DEP)
 
 re: fclean all
 

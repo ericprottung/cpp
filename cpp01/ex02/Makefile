@@ -1,6 +1,6 @@
 NAME = hithisisbrain
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -MMD -I. -std=c++98
+CFLAGS = -Wall -Wextra -Werror -I. -std=c++98
 SRC = main.cpp
 OBJ = $(SRC:%.cpp=%.o)
 DEP = $(OBJ:%.o=%.d)
@@ -18,8 +18,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-
--include : $(DEP)
 
 re: fclean all
 

@@ -6,22 +6,22 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 11:33:12 by eprottun          #+#    #+#             */
-/*   Updated: 2025/11/26 11:59:47 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:36:48 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HUMANB_HPP
 # define HUMANB_HPP
 
-#include <iostream>
+#include <string>
 #include "Weapon.hpp"
 
 class HumanB {
 	public	:
-		void attack();
-		void setWeapon(Weapon& weapon);
+		HumanB(std::string name);
 		
-		HumanB(std::string name) : name(name), weapon(NULL) {}
+		void attack();
+		void setWeapon(Weapon& weapon);	
 	private	:
 		std::string name;
 		Weapon* weapon;
