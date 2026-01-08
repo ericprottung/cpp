@@ -6,28 +6,25 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 10:49:51 by eprottun          #+#    #+#             */
-/*   Updated: 2025/11/26 11:03:02 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/08 15:08:08 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-using std::cout;
-using std::string;
-
 int main() {
-	string str = "HI THIS IS BRAIN";
+	std::string str = "HI THIS IS BRAIN";
 	
-	string* stringPTR = &str;
-	string& stringREF = str;
+	std::string* stringPTR = &str;
+	std::string& stringREF = str;
 
-	cout << &str << std::endl;
-	cout << stringPTR << std::endl;
-	cout << &stringREF << std::endl;
+	std::cout << &str << std::endl;
+	std::cout << stringPTR << std::endl;
+	std::cout << &stringREF << std::endl;
 
-	cout << str << std::endl;
-	cout << *stringPTR << std::endl;
-	cout << stringREF << std::endl;
+	std::cout << str << std::endl;
+	std::cout << *stringPTR << std::endl;
+	std::cout << stringREF << std::endl;
 	
 	return 0;
 }

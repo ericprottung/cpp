@@ -6,7 +6,7 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:12:32 by eprottun          #+#    #+#             */
-/*   Updated: 2026/01/08 14:50:36 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/08 15:08:39 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 #include <fstream>
 #include <sstream>
 
-using std::string;
-
-static int readFile(const char* filename, string &content) {
+static int readFile(const char* filename, std::string &content) {
 	std::stringstream buffer;
 	std::ifstream file(filename);
 	
@@ -31,9 +29,9 @@ static int readFile(const char* filename, string &content) {
 	return 1;
 }
 
-static int stringReplace(string& content, const char* find, const char* replace) {
-	string string1 = find;
-	string string2 = replace;
+static int stringReplace(std::string& content, const char* find, const char* replace) {
+	std::string string1 = find;
+	std::string string2 = replace;
 	
 	if (string1.length() == 0)
 	{
@@ -41,7 +39,7 @@ static int stringReplace(string& content, const char* find, const char* replace)
 		return 0;
 	}
 	std::size_t pos = content.find(string1);
-	while (pos != string::npos)
+	while (pos != std::string::npos)
 	{
 		content.erase(pos, string1.length());
 		content.insert(pos, string2);
@@ -50,7 +48,7 @@ static int stringReplace(string& content, const char* find, const char* replace)
 	return 1;
 }
 
-static int writeFile(const char* filename, const string &content) {
+static int writeFile(const char* filename, const std::string &content) {
 	std::string newName = filename;
 	newName.append(".replace");
 	std::ofstream file(newName.c_str());
@@ -65,7 +63,7 @@ static int writeFile(const char* filename, const string &content) {
 }
 
 int main(int ac, char *argv[]) {
-	string content;
+	std::string content;
 	
 	if (ac != 4)
 	{
