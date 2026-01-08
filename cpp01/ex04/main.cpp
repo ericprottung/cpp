@@ -6,11 +6,9 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:12:32 by eprottun          #+#    #+#             */
-/*   Updated: 2026/01/07 18:03:53 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/08 14:50:36 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "StringReplace.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -18,7 +16,7 @@
 
 using std::string;
 
-static int readFile(char* filename, string &content) {
+static int readFile(const char* filename, string &content) {
 	std::stringstream buffer;
 	std::ifstream file(filename);
 	
@@ -33,7 +31,7 @@ static int readFile(char* filename, string &content) {
 	return 1;
 }
 
-static int stringReplace(string& content, char* find, char* replace) {
+static int stringReplace(string& content, const char* find, const char* replace) {
 	string string1 = find;
 	string string2 = replace;
 	
@@ -52,9 +50,10 @@ static int stringReplace(string& content, char* find, char* replace) {
 	return 1;
 }
 
-static int writeFile(char* filename, string &content) {
-	std::ofstream file(filename);
-	
+static int writeFile(const char* filename, const string &content) {
+	std::string newName = filename;
+	newName.append(".replace");
+	std::ofstream file(newName.c_str());
 	if (!file.is_open())
 	{
 		std::cerr << "File couldn't be opened" << std::endl;
