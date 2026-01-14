@@ -6,11 +6,13 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 14:56:31 by eprottun          #+#    #+#             */
-/*   Updated: 2025/11/27 16:16:54 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/09 17:23:00 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+#include <iostream>
 
 std::ostream& operator<<(std::ostream& os, Fixed const& fixed)
 {

@@ -6,77 +6,78 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 14:26:35 by eprottun          #+#    #+#             */
-/*   Updated: 2025/11/28 13:22:58 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/14 17:09:58 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include <iostream>
 
-Fixed::Fixed() : fp_number(0) {
+Fixed::Fixed() : fpNumber(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
-Fixed::Fixed(const int value) : fp_number(value << fractional_bits) {
+Fixed::Fixed(const int value) : fpNumber(value << fractionalBits) {
 	std::cout << "Int constructor called" << std::endl;
 }
-Fixed::Fixed(const float value) : fp_number(roundf(value * (1 << fractional_bits))) {
+Fixed::Fixed(const float value) : fpNumber(roundf(value * (1 << fractionalBits))) {
 	std::cout << "Float constructor called" << std::endl;
 }
-Fixed::Fixed(const Fixed& other) : fp_number(other.fp_number){
+Fixed::Fixed(const Fixed& other) : fpNumber(other.fpNumber){
 	std::cout << "Copy constructor called" << std::endl;
 }
 Fixed& Fixed::operator=(const Fixed& other) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
-		fp_number = other.fp_number;
+		fpNumber = other.fpNumber;
 	return *this;
 }
 bool Fixed::operator<(const Fixed& other) const {
-	return (fp_number < other.fp_number);
+	return (fpNumber < other.fpNumber);
 }
 bool Fixed::operator>(const Fixed& other) const {
-	return (fp_number > other.fp_number);
+	return (fpNumber > other.fpNumber);
 }
 bool Fixed::operator==(const Fixed& other) const {
-	return (fp_number == other.fp_number);
+	return (fpNumber == other.fpNumber);
 }
 bool Fixed::operator>=(const Fixed& other) const {
-	return (fp_number >= other.fp_number);
+	return (fpNumber >= other.fpNumber);
 }
 bool Fixed::operator<=(const Fixed& other) const {
-	return (fp_number <= other.fp_number);
+	return (fpNumber <= other.fpNumber);
 }
 bool Fixed::operator!=(const Fixed& other) const {
-	return (fp_number != other.fp_number);
+	return (fpNumber != other.fpNumber);
 }
 Fixed Fixed::operator+(const Fixed& other) const {
 	Fixed add;
-	add.setRawBits(fp_number + other.fp_number);
+	add.setRawBits(fpNumber + other.fpNumber);
 	return add;
 }
 Fixed Fixed::operator-(const Fixed& other) const {
 	Fixed sub;
-	sub.setRawBits(fp_number - other.fp_number);
+	sub.setRawBits(fpNumber - other.fpNumber);
 	return sub;
 }
 Fixed Fixed::operator*(const Fixed& other) const {
-	Fixed mul(this->toFloat() * other.toFloat());
+	Fixed mul(toFloat() * other.toFloat());
 	return mul;
 }
 Fixed Fixed::operator/(const Fixed& other) const {
-	Fixed div(this->toFloat() / other.toFloat());
+	Fixed div(toFloat() / other.toFloat());
 	return div;
 }
 Fixed& Fixed::operator++() {
-	fp_number++;
+	fpNumber++;
 	return (*this);
 }
 Fixed Fixed::operator++(int) {
 	Fixed tmp(*this);
-	this->operator++();
+	operator++();
 	return tmp;
 }
 Fixed& Fixed::operator--() {
-	fp_number--;
+	fpNumber--;
 	return (*this);
 }
 Fixed Fixed::operator--(int) {
@@ -88,16 +89,16 @@ Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
 int Fixed::getRawBits( void ) const {
-	return fp_number;
+	return fpNumber;
 }
 void Fixed::setRawBits( int const raw ) {
-	fp_number = raw;
+	fpNumber = raw;
 }
 float Fixed::toFloat( void ) const {
-	return ((float)fp_number / (1 << fractional_bits));
+	return ((float)fpNumber / (1 << fractionalBits));
 }
 int Fixed::toInt( void ) const {
-	return (fp_number / (1 << fractional_bits));
+	return (fpNumber / (1 << fractionalBits));
 }
 const Fixed& Fixed::min(const Fixed& nr1, const Fixed& nr2) {
 	return nr2 < nr1 ? nr2 : nr1;

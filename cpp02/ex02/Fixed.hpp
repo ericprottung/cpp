@@ -6,14 +6,13 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 14:53:45 by eprottun          #+#    #+#             */
-/*   Updated: 2025/11/28 13:11:14 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:33:57 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
-# include <iostream>
 # include <cmath>
 
 
@@ -36,8 +35,8 @@ class Fixed {
 		Fixed operator--(int);
 		Fixed operator+(const Fixed& other) const;
 		Fixed operator-(const Fixed& other) const;
-		Fixed operator*(const Fixed& other) const ;
-		Fixed operator/(const Fixed& other) const ;
+		Fixed operator*(const Fixed& other) const;
+		Fixed operator/(const Fixed& other) const;
 		~Fixed();
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
@@ -48,8 +47,8 @@ class Fixed {
 		static const Fixed& max(const Fixed& nr1, const Fixed& nr2);
 		static Fixed& max(Fixed& nr1, Fixed& nr2);
 	private :
-		int fp_number;
-		static const int fractional_bits = 8;
+		int fpNumber;
+		static const int fractionalBits = 8;
 }	;
 
 
