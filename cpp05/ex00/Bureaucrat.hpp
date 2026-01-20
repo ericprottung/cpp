@@ -13,25 +13,30 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include <exception>
+# include "GradeTooHighException.hpp"
+# include "GradeTooLowException.hpp"
 # include <string>
-
-class GradeTooHighException : std::exception {
-		
-}	;
 
 class Bureaucrat {
 	public:
 		Bureaucrat();
 		Bureaucrat(int newGrade);
+		Bureaucrat(const std::string &name, int newGrade);
 		Bureaucrat(const Bureaucrat& other);
 		Bureaucrat& operator=(const Bureaucrat& other);
 		~Bureaucrat();
-		std::exception GradeTooHighException();
 		const std::string& getName() const;
-		const int getGrade() const;
-		void incrementGrade(int amount);
-		void decrementGrade(int amount);
+		int getGrade() const;
+		void incrementGrade();
+		void decrementGrade();
+		class GradeTooHighException : public std::exception {
+		    public:
+				virtual const char *what() const throw();
+		};		
+		class GradeTooLowException : public std::exception {
+            public:
+		        virtual const char *what() const throw();
+		};
 	private:
 		const std::string name;
 		int grade;

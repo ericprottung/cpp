@@ -1,7 +1,7 @@
-NAME = harlfilter
+NAME = fixed
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -MMD -I. -std=c++98
-SRC = main.cpp Harl.cpp
+SRC = main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJ = $(SRC:%.cpp=%.o)
 DEP = $(OBJ:%.o=%.d)
 
