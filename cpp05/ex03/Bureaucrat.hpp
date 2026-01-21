@@ -15,6 +15,8 @@
 
 # include <string>
 
+class AForm;
+
 class Bureaucrat {
 	public:
 		Bureaucrat();
@@ -27,6 +29,8 @@ class Bureaucrat {
 		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
+		void signForm(AForm &toSign);
+		void executeForm(AForm const & form) const;
 		class GradeTooHighException : public std::exception {
 		    public:
 				virtual const char *what() const throw();
@@ -39,5 +43,7 @@ class Bureaucrat {
 		const std::string name;
 		int grade;
 }	;
+
+std::ostream& operator<<(std::ostream& os, Bureaucrat const& bureaucrat);
 
 #endif

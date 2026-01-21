@@ -1,5 +1,6 @@
 #include <exception>
 #include <iostream>
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat const& bureaucrat){
@@ -9,35 +10,22 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat const& bureaucrat){
 
 int main() {
     try {
-        Bureaucrat Bob(151);
-        Bureaucrat Jonny("Jonny", 0);
         Bureaucrat Frank("Frank", 1);
+        Form fireEmployees("fireEmployees", 10, 100);
+        Frank.signForm(fireEmployees);
+        for (int i = 0; i < 50; i++) {
+           Frank.decrementGrade(); 
+        }
+        std::cout << fireEmployees;
         std::cout << Frank;
-        Frank.incrementGrade();
-        Frank.decrementGrade();
-        std::cout << Frank;
+        Frank.signForm(fireEmployees);
+        for (int i = 0; i < 50; i++) {
+           Frank.decrementGrade(); 
+        }
+        Frank.signForm(fireEmployees);
+        Form wrongConstruction("im wrong", 0, 151);
     }
     catch (std::exception &e) {
-        std::cout << e.what();
-    }    
-    try {
-        Bureaucrat Jonny("Jonny", 0);
-    }
-    catch (std::exception &e) {
-        std::cout << e.what();
-    }    
-    try {
-        Bureaucrat Frank("Frank", 1);
-        std::cout << Frank;
-        Frank.decrementGrade();
-        std::cout << Frank;
-        Frank.incrementGrade();
-        std::cout << Frank;
-        Frank.incrementGrade();
-        std::cout << Frank;
-    }
-    catch (std::exception &e) {
-        std::cout << e.what();
-    }
-    return 0;
+        std::cout << "Construction error: " <<e.what();
+    } 
 }

@@ -1,53 +1,53 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <iostream>
 #include <stdexcept>
 
-Form::Form() : name("deleteHumanity") , isSigned(false), execPermission(1), signPermission(10) {}
+AForm::AForm() : name("deleteHumanity") , isSigned(false), execPermission(1), signPermission(10) {}
 
-Form::Form(Form &other) : name(other.name),
+AForm::AForm(AForm &other) : name(other.name),
                         isSigned(other.isSigned),
                         execPermission(other.execPermission),
                         signPermission(other.signPermission) {}
 
-Form::Form(const std::string& newName, int signPerm, const int execPerm) : name(newName) , isSigned(0), execPermission(execPerm), signPermission(signPerm){
+AForm::AForm(const std::string& newName, int signPerm, const int execPerm) : name(newName) , isSigned(0), execPermission(execPerm), signPermission(signPerm){
     if (execPerm > 150 || signPerm > 150)
         throw GradeTooLowException();    
     if (execPerm < 1 || signPerm < 1)
         throw GradeTooHighException();
 }
 
-Form& Form::operator=(const Form &other) {
+AForm& AForm::operator=(const AForm &other) {
     (void)other;
     return *this;
 }
 
-Form::~Form(){}
+AForm::~AForm(){}
 
-const char* Form::GradeTooHighException::what() const throw() {
-    return "GradeTooHighException\n";
+const char* AForm::GradeTooHighException::what() const throw() {
+    return "GradeTooHighException";
 }
 
-const char* Form::GradeTooLowException::what() const throw() {
-    return "GradeTooLowException\n";
+const char* AForm::GradeTooLowException::what() const throw() {
+    return "GradeTooLowException";
 }
-const std::string& Form::getName() const{
+const std::string& AForm::getName() const{
     return name;
 } 
 
-int Form::getSignPermission() const{
+int AForm::getSignPermission() const{
     return signPermission;
 } 
 
-int Form::getExecPermission() const {
+int AForm::getExecPermission() const {
     return execPermission;
 } 
 
-bool Form::getSignState() const{
+bool AForm::getSignState() const{
     return isSigned;
 }
 
-std::ostream& operator<<(std::ostream& os, const Form& form) {
+std::ostream& operator<<(std::ostream& os, const AForm& form) {
    os << "Name: " << form.getName() << "\n";
    os << "Sign state: " << form.getSignState() << "\n";
    os << "Lowest grade to execute: " << form.getExecPermission() << "\n";
@@ -55,7 +55,7 @@ std::ostream& operator<<(std::ostream& os, const Form& form) {
     return os;
 }
 
-void Form::beSigned(Bureaucrat &bureaucrat) {
+void AForm::beSigned(Bureaucrat &bureaucrat) {
     if (signPermission < bureaucrat.getGrade())
         throw GradeTooLowException();
     if (isSigned)

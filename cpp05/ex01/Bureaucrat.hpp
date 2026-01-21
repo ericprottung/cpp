@@ -13,9 +13,9 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include "GradeTooHighException.hpp"
-# include "GradeTooLowException.hpp"
 # include <string>
+
+class Form;
 
 class Bureaucrat {
 	public:
@@ -29,6 +29,7 @@ class Bureaucrat {
 		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
+		void signForm(Form &toSign);
 		class GradeTooHighException : public std::exception {
 		    public:
 				virtual const char *what() const throw();

@@ -5,13 +5,14 @@
 
 class Bureaucrat;
 
-class Form {
+class AForm {
     public :
-        Form();
-        Form(Form &other);
-        Form(const std::string& newName, const int signPerm, const int execPerm);
-        Form& operator=(const Form &other);
-        ~Form();
+        AForm();
+        AForm(AForm &other);
+        AForm(const std::string& newName, const int signPerm, const int execPerm);
+        AForm& operator=(const AForm &other);
+        virtual ~AForm();
+        
         const std::string& getName() const; 
         int getSignPermission() const; 
         int getExecPermission() const; 
@@ -25,6 +26,7 @@ class Form {
                   public:
 		        virtual const char *what() const throw();
 		};
+		virtual void execute(Bureaucrat const & executor) const = 0;
     private:
         const std::string name;
         bool  isSigned;
@@ -32,6 +34,6 @@ class Form {
         const int signPermission;
 }   ;
 
-std::ostream& operator<<(std::ostream& os, const Form& form);
+std::ostream& operator<<(std::ostream& os, const AForm& form);
 
 #endif
