@@ -44,5 +44,5 @@ void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 }
 
 const std::string& ShrubberyCreationForm::getTarget() const {
-   return target;
+    return target;
 }
