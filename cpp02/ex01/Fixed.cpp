@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-
 #include <iostream>
 #include <cmath>
 
@@ -59,3 +58,10 @@ float Fixed::toFloat( void ) const {
 int Fixed::toInt( void ) const {
 	return (fpNumber / (1 << fractionalBits));
 }
+
+std::ostream& operator<<(std::ostream& os, Fixed const& fixed)
+{
+	os << fixed.toFloat();
+	return os;
+}
+	

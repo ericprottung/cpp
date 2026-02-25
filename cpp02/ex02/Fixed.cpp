@@ -68,7 +68,7 @@ Fixed Fixed::operator/(const Fixed& other) const {
 	return div;
 }
 Fixed& Fixed::operator++() {
-	fpNumber++;
+	++fpNumber;
 	return (*this);
 }
 Fixed Fixed::operator++(int) {
@@ -77,7 +77,7 @@ Fixed Fixed::operator++(int) {
 	return tmp;
 }
 Fixed& Fixed::operator--() {
-	fpNumber--;
+	--fpNumber;
 	return (*this);
 }
 Fixed Fixed::operator--(int) {
@@ -111,4 +111,9 @@ const Fixed& Fixed::max(const Fixed& nr1, const Fixed& nr2) {
 }
 Fixed& Fixed::max(Fixed& nr1, Fixed& nr2) {
 	return nr2 > nr1 ? nr2 : nr1;
+}
+
+std::ostream& operator<<(std::ostream& os, Fixed const& fixed){
+	os << fixed.toFloat();
+	return os;
 }

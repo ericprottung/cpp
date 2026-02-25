@@ -10,14 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
 #include "Point.hpp"
 #include <iostream>
 
-std::ostream& operator<<(std::ostream& os, Fixed const& fixed){
-	os << fixed.toFloat();
-	return os;
-}
 	
 int main( void ) {
     Point a(2, 0);
@@ -35,5 +30,10 @@ int main( void ) {
     Point i(0, 0);
     Point testinho(0.99, 0.99);
     std::cout << std::endl << bsp(g, h, i, testinho) << std::endl;
+    Point j(-3, 1);
+    Point k(-1, 3);
+    Point l(-1, 1);
+    Point testonius(-2, 2);
+    std::cout << std::endl << bsp(j, k, l, testonius) << std::endl;
     return 0;
 }

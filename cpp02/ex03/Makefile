@@ -1,4 +1,4 @@
-NAME = fixed
+NAME = bsp
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -MMD -I. -std=c++98
 SRC = main.cpp Fixed.cpp Point.cpp bsp.cpp

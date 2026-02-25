@@ -86,7 +86,7 @@ Fixed Fixed::operator--(int) {
 	return (tmp);
 }
 Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
+	// std::cout << "Destructor called" << std::endl;
 }
 int Fixed::getRawBits( void ) const {
 	return fpNumber;
@@ -111,4 +111,8 @@ const Fixed& Fixed::max(const Fixed& nr1, const Fixed& nr2) {
 }
 Fixed& Fixed::max(Fixed& nr1, Fixed& nr2) {
 	return nr2 > nr1 ? nr2 : nr1;
+}
+std::ostream& operator<<(std::ostream& os, Fixed const& fixed){
+	os << fixed.toFloat();
+	return os;
 }

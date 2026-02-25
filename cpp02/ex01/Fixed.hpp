@@ -13,6 +13,8 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
+#include <ostream>
+
 class Fixed {
 	public :
 		Fixed();
@@ -28,6 +30,8 @@ class Fixed {
 	private :
 		int fpNumber;
 		static const int fractionalBits = 8;
-	}	;
-	
+}	;
+
+std::ostream& operator<<(std::ostream& os, Fixed const& fixed);
+
 #endif

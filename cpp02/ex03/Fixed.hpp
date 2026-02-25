@@ -14,6 +14,7 @@
 # define FIXED_HPP
 
 # include <cmath>
+# include <ostream>
 
 
 class Fixed {
@@ -51,5 +52,6 @@ class Fixed {
 		static const int fractionalBits = 8;
 }	;
 
+std::ostream& operator<<(std::ostream& os, Fixed const& fixed);
 
 #endif
