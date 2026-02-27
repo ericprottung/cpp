@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
+#include "WrongAnimal.hpp"
 
-WrongCat::WrongCat() {
+WrongCat::WrongCat() : WrongAnimal(){
 	type = "WrongCat";
 }
 
-WrongCat::WrongCat(const WrongCat& other) {
+WrongCat::WrongCat(const WrongCat& other) : WrongAnimal(other) {
 	type = other.type;
 }
 

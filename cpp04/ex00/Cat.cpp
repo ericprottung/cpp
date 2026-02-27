@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "Cat.hpp"
+#include <iostream>
 
-Cat::Cat() {
+Cat::Cat() : Animal(){
 	type = "Cat";
 }
 
-Cat::Cat(const Cat& other) {
+Cat::Cat(const Cat& other) : Animal(other) {
 	type = other.type;
 }
 
@@ -28,5 +29,5 @@ Cat& Cat::operator=(const Cat& other) {
 Cat::~Cat() {}
 
 void Cat::makeSound() const {
-	cout << "I can only meow!" << endl;
+	std::cout << "I can only meow!" << std::endl;
 }
