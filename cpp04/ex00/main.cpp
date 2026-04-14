@@ -34,7 +34,7 @@ int main()
 	i->makeSound();
 	std::cout << l->getType() << std::endl;
 	l->makeSound();
-	std::cout << meta->getType() << std::endl;
+	std::cout << "\nmeta animal\n";
 	meta->makeSound();
 	std::cout << k->getType() << std::endl;
 	k->makeSound();

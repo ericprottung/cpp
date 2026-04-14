@@ -45,7 +45,7 @@ Brain::~Brain() {
 
 void    Brain::printIdeas() const{
     for (unsigned int i = 0; i < 100; ++i)
-        std::cout << ideas[i];
+        std::cout << ideas[i] << "\n";
 }
 
 void    Brain::setIdea(unsigned int pos, const std::string &idea) {

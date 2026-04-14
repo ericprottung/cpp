@@ -58,12 +58,15 @@ int main() {
 	delete one;
 	std::cout << "\nshould still have fiiiight\n";
 	two->printIdeas();
+	Cat copycat(*two);
+	delete two;
+	std::cout << "\ncopycat should print\n";
+	copycat.printIdeas();
 	delete meta;
 	delete j;
 	delete i;
 	delete l;
 	delete k;
-	delete two;
 	std::cout << "\nnow the deletion starts\n";
 	for (unsigned int i = 0; i < 100 ; ++i)
 	    delete array[i];
