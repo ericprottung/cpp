@@ -20,13 +20,12 @@ int main() {
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 	const Animal* l = new Cat(*static_cast<const Cat *>(i));
-	Cat one;
-	Cat two;
-	one = two;
+	Cat *one = new Cat();
+	Cat *two = new Cat();
 	const WrongAnimal* k = new WrongCat();
 	WrongCat test;
 
-	std::cout << "\n<<<<<<<<<<< getType and makeSound comparison >>>>>>>>>>>>>\n";
+	std::cout << "\n\n<<<<<<<<<<< 1.   getType and makeSound comparison >>>>>>>>>>>>>\n\n";
 	std::cout << j->getType() << std::endl;
 	j->makeSound();
 	std::cout << i->getType() << std::endl;
@@ -41,26 +40,30 @@ int main() {
 	test.makeSound();
 	std::cout << std::endl;
 	
-	std::cout << "\n<<<<<<<<<<< subject test >>>>>>>>>>>>>\n";
+	std::cout << "\n\n<<<<<<<<<<< 2. subject test >>>>>>>>>>>>>\n\n";
 	Animal *array[100];
 	for (unsigned int i = 0 ; i < 99 ; i += 2) {
 	    array[i] = new Dog();
 	    array[i + 1] = new Cat();
 	}
-	std::cout << "\n<<<<<<<<<<< Brain check >>>>>>>>>>>>>\n";
-	one.printIdeas();
-	one.setIdea("fiiiiight", 2);
+	std::cout << "\n\n<<<<<<<<<<< 3. deep copy test >>>>>>>>>>>>>\n\n";
+	one->printIdeas();
+	one->setIdea("fiiiiight", 2);
 	std::cout << std::endl;
-	one.printIdeas();
-	two = one;
+	two->printIdeas();
+	*two = *one;
 	std::cout << "\nideas of cat two must have fiiiight at 2\n";
-	two.printIdeas();
-
+	two->printIdeas();
+	std::cout << "\nnow original one gets deleted\n";
+	delete one;
+	std::cout << "\nshould still have fiiiight\n";
+	two->printIdeas();
 	delete meta;
 	delete j;
 	delete i;
 	delete l;
 	delete k;
+	delete two;
 	std::cout << "\nnow the deletion starts\n";
 	for (unsigned int i = 0; i < 100 ; ++i)
 	    delete array[i];
