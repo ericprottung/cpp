@@ -48,11 +48,9 @@ void Dog::makeSound() const {
 
 void	Dog::setIdea(const std::string& idea, int pos) {
 	if (pos >= 0 && pos < 100)
-		brain->ideas[pos] = idea;
+	    brain->setIdea(pos, idea);
 }
 		
 void	Dog::printIdeas() const {
-	for (int i = 0; i < 100; ++i) {
-		std::cout << brain->ideas[i] << "\n";
-	}
+    brain->printIdeas();
 }

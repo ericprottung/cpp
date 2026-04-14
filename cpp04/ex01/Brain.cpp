@@ -42,3 +42,12 @@ Brain& Brain::operator=(const Brain& other) {
 Brain::~Brain() {
 	std::cout << "Brain destructor" << std::endl;
 }
+
+void    Brain::printIdeas() const{
+    for (unsigned int i = 0; i < 100; ++i)
+        std::cout << ideas[i];
+}
+
+void    Brain::setIdea(unsigned int pos, const std::string &idea) {
+    ideas[pos] = idea;
+}

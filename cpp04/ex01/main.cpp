@@ -41,6 +41,12 @@ int main() {
 	test.makeSound();
 	std::cout << std::endl;
 	
+	std::cout << "\n<<<<<<<<<<< subject test >>>>>>>>>>>>>\n";
+	Animal *array[100];
+	for (unsigned int i = 0 ; i < 99 ; i += 2) {
+	    array[i] = new Dog();
+	    array[i + 1] = new Cat();
+	}
 	std::cout << "\n<<<<<<<<<<< Brain check >>>>>>>>>>>>>\n";
 	one.printIdeas();
 	one.setIdea("fiiiiight", 2);
@@ -55,5 +61,8 @@ int main() {
 	delete i;
 	delete l;
 	delete k;
+	std::cout << "\nnow the deletion starts\n";
+	for (unsigned int i = 0; i < 100 ; ++i)
+	    delete array[i];
 	return 0;
 }
