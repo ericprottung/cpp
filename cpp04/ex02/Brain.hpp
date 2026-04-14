@@ -21,6 +21,9 @@ class Brain {
 		Brain(const Brain& other);
 		Brain& operator=(const Brain& other);
 		~Brain();
+		void printIdeas() const;
+		void    setIdea(unsigned int pos, const std::string &idea);
+	private:
 		std::string ideas[100];
 }	;
 

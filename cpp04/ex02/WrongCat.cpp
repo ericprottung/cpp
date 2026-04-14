@@ -50,11 +50,9 @@ void WrongCat::makeSound() const {
 
 void	WrongCat::setIdea(const std::string& idea, int pos) {
 	if (pos >= 0 && pos < 100)
-		brain->ideas[pos] = idea;
+	    brain->setIdea(pos, idea);
 }
 		
 void	WrongCat::printIdeas() const {
-	for (int i = 0; i < 100; ++i) {
-		std::cout << brain->ideas[i] << "\n";
-	}
+    brain->printIdeas();
 }
