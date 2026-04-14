@@ -6,7 +6,7 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:31:14 by eprottun          #+#    #+#             */
-/*   Updated: 2025/12/09 14:02:52 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/03/01 17:38:24 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ class WrongCat : public WrongAnimal{
 		WrongCat();
 		WrongCat(const WrongCat& other);
 		WrongCat& operator=(const WrongCat& other);
-		~WrongCat();
+		virtual ~WrongCat();
+		void makeSound() const;
 }	;
 
 #endif

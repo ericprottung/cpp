@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:31:14 by eprottun          #+#    #+#             */
-/*   Updated: 2026/03/01 19:08:53 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/03/01 19:11:16 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-# include "Animal.hpp"
+# include "WrongAnimal.hpp"
 # include "Brain.hpp"
 
-class Cat : public Animal{
+class WrongCat : public WrongAnimal{
 	public:
-		Cat();
-		Cat(const Cat& other);
-		Cat& operator=(const Cat& other);
-		virtual ~Cat();
-		void	makeSound() const;
+		WrongCat();
+		WrongCat(const WrongCat& other);
+		WrongCat& operator=(const WrongCat& other);
+		virtual ~WrongCat();
+		void makeSound() const;
 		void	setIdea(const std::string& idea, int pos);
 		void	printIdeas() const;
 	private:

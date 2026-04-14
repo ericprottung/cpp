@@ -6,7 +6,7 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 10:56:51 by eprottun          #+#    #+#             */
-/*   Updated: 2026/01/06 17:49:23 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/03/01 17:27:27 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Animal {
 		Animal();
 		Animal(const Animal& other);
 		Animal& operator=(const Animal& other);
-		~Animal();
+		virtual ~Animal();
 
 		virtual void	makeSound() const;
 		std::string	getType() const;

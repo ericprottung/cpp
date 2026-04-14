@@ -6,11 +6,12 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 14:28:13 by eprottun          #+#    #+#             */
-/*   Updated: 2025/11/28 14:46:42 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/02/26 20:51:33 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include <iostream>
 
 int main () {
 	ClapTrap one("John");
@@ -24,7 +25,7 @@ int main () {
 	two.takeDamage(0);
 	one.attack(two.getName());
 	two.takeDamage(0);
-	cout << one.getName() << " forgot to pick up his axe and takes it!" << endl;
+	std::cout << one.getName() << " forgot to pick up his axe and takes it!" << std::endl;
 	one.setAttackDamage(2);
 	one.attack(two.getName());
 	two.takeDamage(2);
@@ -34,7 +35,7 @@ int main () {
 	two.takeDamage(2);
 	one.attack(two.getName());
 	two.takeDamage(2);
-	cout << two.getName() << " finally responds!" << endl;
+	std::cout << two.getName() << " finally responds!" << std::endl;
 	two.beRepaired(1);
 	two.beRepaired(1);
 	two.beRepaired(1);

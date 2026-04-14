@@ -6,7 +6,7 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:31:14 by eprottun          #+#    #+#             */
-/*   Updated: 2025/12/09 14:02:52 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/03/01 17:27:22 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Cat : public Animal{
 		Cat();
 		Cat(const Cat& other);
 		Cat& operator=(const Cat& other);
-		~Cat();
+		virtual ~Cat();
 		void	makeSound() const;
 }	;
 

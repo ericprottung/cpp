@@ -6,13 +6,14 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 14:28:13 by eprottun          #+#    #+#             */
-/*   Updated: 2025/11/28 16:52:53 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/02/26 20:58:57 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include <iostream>
 
 int main () {
 	ClapTrap one("John");
@@ -27,7 +28,7 @@ int main () {
 	two.takeDamage(0);
 	one.attack(two.getName());
 	two.takeDamage(0);
-	cout << one.getName() << " forgot to pick up his axe and takes it!" << endl;
+	std::cout << one.getName() << " forgot to pick up his axe and takes it!" << std::endl;
 	one.setAttackDamage(2);
 	one.attack(two.getName());
 	two.takeDamage(2);
@@ -37,7 +38,7 @@ int main () {
 	two.takeDamage(2);
 	one.attack(two.getName());
 	two.takeDamage(2);
-	cout << two.getName() << " finally responds!" << endl;
+	std::cout << two.getName() << " finally responds!" << std::endl;
 	two.beRepaired(1);
 	two.beRepaired(1);
 	two.beRepaired(1);
@@ -55,7 +56,7 @@ int main () {
 	four.guardGate();
 	four.attack(two.getName());
 	two.takeDamage(20);
-	cout << "A FragTrap appears!" << endl;
+	std::cout << "A FragTrap appears!" << std::endl;
 	FragTrap five("Lars");
 	five.highFivesGuys();
 	return 0;

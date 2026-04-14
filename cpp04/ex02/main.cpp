@@ -6,7 +6,7 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 10:56:12 by eprottun          #+#    #+#             */
-/*   Updated: 2026/03/01 19:20:41 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/03/01 19:24:01 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <iostream>
 
 int main() {
-	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 	const Animal* l = new Cat(*static_cast<const Cat *>(i));
@@ -33,8 +32,6 @@ int main() {
 	i->makeSound();
 	std::cout << l->getType() << std::endl;
 	l->makeSound();
-	std::cout << meta->getType() << std::endl;
-	meta->makeSound();
 	std::cout << k->getType() << std::endl;
 	k->makeSound();
 	std::cout << test.getType() << std::endl;
@@ -50,7 +47,6 @@ int main() {
 	std::cout << "\nideas of cat two must have fiiiight at 2\n";
 	two.printIdeas();
 
-	delete meta;
 	delete j;
 	delete i;
 	delete l;

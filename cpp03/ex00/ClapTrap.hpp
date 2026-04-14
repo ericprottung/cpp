@@ -6,35 +6,32 @@
 /*   By: eprottun <eprottun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 13:33:11 by eprottun          #+#    #+#             */
-/*   Updated: 2025/11/28 16:42:21 by eprottun         ###   ########.fr       */
+/*   Updated: 2026/02/26 22:24:05 by eprottun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_H
-# define CLAPTRAP_H
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
-# include <iostream>
-
-using std::cout;
-using std::endl;
-using std::string;
+# include <string>
 
 class ClapTrap {
 	public :
 		ClapTrap();
-		ClapTrap(string name);
+		ClapTrap(const std::string& name);
 		ClapTrap(const ClapTrap& other);
 		ClapTrap& operator=(const ClapTrap& other);
-		~ClapTrap();
+		virtual ~ClapTrap();
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-		string getName();
+		std::string getName();
 		void setAttackDamage(unsigned int amount);
 	private :
-		string	name;
+		std::string	name;
 		unsigned int	hitPoints;
 		unsigned int	energyPoints;
 		unsigned int	attackDamage;
 } ;
+
 #endif
