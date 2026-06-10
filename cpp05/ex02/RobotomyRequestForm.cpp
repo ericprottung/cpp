@@ -9,12 +9,12 @@ RobotomyRequestForm::RobotomyRequestForm() : AForm("Shrubbery", 72, 45), target(
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("Shrubbery", 72, 45) , target(target) {}
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm& other) : AForm(other.getName(), other.getSignPermission(), other.getSignPermission()), target(other.target) {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other.getName(), other.getSignPermission(), other.getSignPermission()), target(other.target) {
     
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other) {
-    (void)other;
+    AForm::operator=(other);
     return *this;
 }
 

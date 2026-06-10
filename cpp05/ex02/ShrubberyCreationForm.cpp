@@ -7,12 +7,12 @@ ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery", 145, 137), t
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("Shrubbery", 145, 137) , target(target) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& other) : AForm(other.getName(), other.getSignPermission(), other.getSignPermission()), target(other.target) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other.getName(), other.getSignPermission(), other.getSignPermission()), target(other.target) {
     
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
-    (void)other;
+    AForm::operator=(other);
     return *this;
 }
 

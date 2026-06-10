@@ -1,11 +1,10 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
-#include <iostream>
 #include <stdexcept>
 
 Form::Form() : name("deleteHumanity") , isSigned(false), execPermission(1), signPermission(10) {}
 
-Form::Form(Form &other) : name(other.name),
+Form::Form(const Form &other) : name(other.name),
                         isSigned(other.isSigned),
                         execPermission(other.execPermission),
                         signPermission(other.signPermission) {}
@@ -18,7 +17,7 @@ Form::Form(const std::string& newName, int signPerm, const int execPerm) : name(
 }
 
 Form& Form::operator=(const Form &other) {
-    (void)other;
+    isSigned = other.isSigned;
     return *this;
 }
 
@@ -45,14 +44,6 @@ int Form::getExecPermission() const {
 
 bool Form::getSignState() const{
     return isSigned;
-}
-
-std::ostream& operator<<(std::ostream& os, const Form& form) {
-   os << "Name: " << form.getName() << "\n";
-   os << "Sign state: " << form.getSignState() << "\n";
-   os << "Lowest grade to execute: " << form.getExecPermission() << "\n";
-   os << "Lowest grade to sign: " << form.getSignPermission() << "\n";
-    return os;
 }
 
 void Form::beSigned(Bureaucrat &bureaucrat) {

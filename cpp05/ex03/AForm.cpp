@@ -5,17 +5,18 @@
 
 AForm::AForm() : name("deleteHumanity") , isSigned(false), execPermission(1), signPermission(10) {}
 
-AForm::AForm(AForm &other) : name(other.name),
-                        isSigned(other.isSigned),
-                        execPermission(other.execPermission),
-                        signPermission(other.signPermission) {}
-
 AForm::AForm(const std::string& newName, int signPerm, const int execPerm) : name(newName) , isSigned(0), execPermission(execPerm), signPermission(signPerm){
     if (execPerm > 150 || signPerm > 150)
         throw GradeTooLowException();    
     if (execPerm < 1 || signPerm < 1)
         throw GradeTooHighException();
 }
+
+AForm::AForm(const AForm &other) : name(other.name),
+                        isSigned(other.isSigned),
+                        execPermission(other.execPermission),
+                        signPermission(other.signPermission) {}
+
 
 AForm& AForm::operator=(const AForm &other) {
     (void)other;

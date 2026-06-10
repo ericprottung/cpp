@@ -8,7 +8,7 @@ class Bureaucrat;
 class AForm {
     public :
         AForm();
-        AForm(AForm &other);
+        AForm(const AForm &other);
         AForm(const std::string& newName, const int signPerm, const int execPerm);
         AForm& operator=(const AForm &other);
         virtual ~AForm();

@@ -19,7 +19,7 @@ int main() {
         
         bob.signForm(shrub);
         bob.executeForm(shrub);
-        std::cout << "✓ File home_shrubbery should be created!" << std::endl;
+        std::cout << "File home_shrubbery should be created!" << std::endl;
     } catch (std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;
     }
@@ -30,7 +30,7 @@ int main() {
         ShrubberyCreationForm shrub("office");
         
         intern.signForm(shrub);
-        intern.executeForm(shrub);  // Should fail - grade 145, needs 137
+        intern.executeForm(shrub); 
     } catch (std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;
     }
@@ -42,7 +42,7 @@ int main() {
         
         boss.signForm(robot);
         boss.executeForm(robot);
-        boss.executeForm(robot);  // Try multiple times to see 50% success rate
+        boss.executeForm(robot);  
         boss.executeForm(robot);
     } catch (std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;
@@ -53,7 +53,7 @@ int main() {
         Bureaucrat boss("Boss", 1);
         RobotomyRequestForm robot("Marvin");
         
-        boss.executeForm(robot);  // Should fail - not signed
+        boss.executeForm(robot); 
     } catch (std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;
     }
@@ -74,7 +74,7 @@ int main() {
         Bureaucrat lowGrade("LowGrade", 50);
         PresidentialPardonForm pardon("Ford Prefect");
         
-        lowGrade.signForm(pardon);  // Should fail - needs grade 25
+        lowGrade.signForm(pardon); 
         lowGrade.executeForm(pardon);
     } catch (std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;
@@ -100,8 +100,8 @@ int main() {
     
     std::cout << "\n=== TEST 8: Form construction exceptions ===" << std::endl;
     try {
-        ShrubberyCreationForm invalid("test");  // Should work
-        std::cout << "✓ ShrubberyCreationForm created successfully" << std::endl;
+        ShrubberyCreationForm invalid("test"); 
+        std::cout << "ShrubberyCreationForm created successfully" << std::endl;
     } catch (std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;
     }

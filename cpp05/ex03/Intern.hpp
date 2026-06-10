@@ -6,11 +6,12 @@
 class AForm;
 
 class  Intern   {
-    Intern();
-    Intern(Intern &other);
-    Intern& operator=(const Intern &other);
-    ~Intern();
-    AForm *makeForm(std::string nameOfForm, std::string target);
+    public:
+        Intern();
+        Intern(const Intern &other);
+        Intern& operator=(const Intern &other);
+        ~Intern();
+        AForm *makeForm(std::string nameOfForm, std::string target);
 }   ;
 
 #endif

@@ -1,7 +1,7 @@
 NAME = bureaucrat
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -MMD -I. -std=c++98
-SRC = Bureaucrat.cpp AForm.cpp main.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
+CFLAGS =  -MMD -I. -std=c++98
+SRC = Bureaucrat.cpp AForm.cpp main.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp Intern.cpp
 OBJ = $(SRC:%.cpp=%.o)
 DEP = $(OBJ:%.o=%.d)
 

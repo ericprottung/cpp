@@ -5,7 +5,7 @@
 
 AForm::AForm() : name("deleteHumanity") , isSigned(false), execPermission(1), signPermission(10) {}
 
-AForm::AForm(AForm &other) : name(other.name),
+AForm::AForm(const AForm &other) : name(other.name),
                         isSigned(other.isSigned),
                         execPermission(other.execPermission),
                         signPermission(other.signPermission) {}
@@ -18,7 +18,7 @@ AForm::AForm(const std::string& newName, int signPerm, const int execPerm) : nam
 }
 
 AForm& AForm::operator=(const AForm &other) {
-    (void)other;
+    isSigned = other.isSigned;
     return *this;
 }
 
