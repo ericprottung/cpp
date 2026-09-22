@@ -10,7 +10,7 @@ class ScalarConverter {
         ScalarConverter& operator=(const ScalarConverter& other);
         ~ScalarConverter();
     public :
-        static void convert(const char *literal);
+        static void convert(const std::string &literal);
 }   ;
 
 #endif

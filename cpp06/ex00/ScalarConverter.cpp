@@ -10,21 +10,24 @@
 #include <string.h>
 #include <iostream>
 
-static bool hasDigit(const char *str) {
-    return std::string(str).find_first_of("0123456789") != std::string::npos;
+static bool hasDigit(const std::string& str) {
+    return str.find_first_of("0123456789") != std::string::npos;
 }
-static void printSpecialCase(const char *literal) {
+
+static void printSpecialCase(const std::string& literal)
+{
     std::cout << "char: impossible\n"
-    << "int: impossible\n";
-    if (!strncmp(literal, "nan", 3))
+              << "int: impossible\n";
+
+    if (literal == "nan" || literal == "nanf")
         std::cout << "float: nanf\ndouble: nan\n";
-    if (!strncmp(literal, "-inf", 4))
+    else if (literal == "-inf" || literal == "-inff")
         std::cout << "float: -inff\ndouble: -inf\n";
-    if (!strncmp(literal, "+inf", 4))
+    else if (literal == "+inf" || literal == "+inff")
         std::cout << "float: +inff\ndouble: +inf\n";
 }
 
-static void printImpossible(const char* literal) {
+static void printImpossible(const std::string& literal) {
     (void)literal;
     std::cout << "char: impossible\n"
     << "int: impossible\n"
@@ -32,45 +35,59 @@ static void printImpossible(const char* literal) {
     << "double: impossible\n";
 }
 
-static void printChar(const char *literal) {
-    char c = literal[0 + (strlen(literal) == 3)];
-    if (!std::isprint(c))
+static void printChar(const std::string& literal) {
+    char c;
+    if (literal.size() == 3 && literal[0] == '\'' && literal[2] == '\'')
+        c = literal[1];
+    else
+        c = literal[0];
+
+    if (!std::isprint(static_cast<unsigned char>(c)))
         std::cout << "char: non printable\n";
     else
         std::cout << "char: '" << c << "'\n";
+    
     std::cout << "int: " << static_cast<int>(c) << "\n";
     std::cout << std::fixed << std::setprecision(1);
     std::cout << "float: " << static_cast<float>(c) << "f\n";
     std::cout << "double: " << static_cast<double>(c) << "\n";
 }
 
-static void printInt(const char *literal) {
-    double d = strtod(literal, NULL);
-    int i = atoi(literal);
-    if (i < CHAR_MIN || i > CHAR_MAX)
+static void printInt(const std::string& literal) {
+    bool overflow = false;
+    double d = std::strtod(literal.c_str(), NULL);
+    int i = static_cast<int>(d);
+    if (d < CHAR_MIN || d > CHAR_MAX)
         std::cout << "char: impossible\n";
-    else if (!std::isprint(i))
+    else if (!std::isprint(static_cast<unsigned char>(i)))
         std::cout << "char: non printable\n";
     else
-        std::cout << "char: '" << static_cast<char>(i) << "'\n";
-    if (d < INT_MIN || d > INT_MAX)
-        std::cout << "int: overflowed! values unreliable for float and double\n";
+        std::cout << "char: '" << static_cast<unsigned char>(i) << "'\n";
+    if (d < INT_MIN || d > INT_MAX) {
+        std::cout << "int: impossible\n";
+        overflow = true;
+    }
     else
         std::cout << "int: " << i << "\n";
-    std::cout << std::fixed << std::setprecision(1);
-    std::cout << "float: " << static_cast<float>(i) << "f\n";
-    std::cout << "double: " << static_cast<double>(i) << "\n"; 
+    if (overflow)
+        std::cout << "float: impossible\ndouble: impossible\n";
+    else {
+        std::cout << std::fixed << std::setprecision(1);
+        std::cout << "float: " << static_cast<float>(i) << "f\n";
+        std::cout << "double: " << static_cast<double>(i) << "\n"; 
+    }
 }
 
-static void printFloat(const char *literal) {
-    float f = strtof(literal, NULL);
-    if (f < CHAR_MIN || f > CHAR_MAX)
+static void printFloat(const std::string& literal) {
+    float f = static_cast<float>(std::strtod(literal.c_str(), NULL));
+    double d = static_cast<double>(f);
+    if (d < CHAR_MIN || d > CHAR_MAX)
         std::cout << "char: impossible\n";
-    else if (!std::isprint(static_cast<char>(f)))
+    else if (!std::isprint(static_cast<unsigned char>(f)))
         std::cout << "char: non printable\n";
     else
         std::cout << "char: '" << static_cast<char>(f) << "'\n";
-    if (f < INT_MIN || f > INT_MAX)
+    if (d < INT_MIN || d > INT_MAX)
         std::cout << "int: impossible\n";
     else
         std::cout << "int: " << static_cast<int>(f) << "\n";
@@ -79,11 +96,11 @@ static void printFloat(const char *literal) {
     std::cout << "double: " << static_cast<double>(f) << "\n";  
 }
 
-static void printDouble(const char *literal) { 
-    double d = strtod(literal, NULL);
+static void printDouble(const std::string& literal) { 
+    double d = std::strtod(literal.c_str(), NULL);
     if (d < CHAR_MIN || d > CHAR_MAX)
         std::cout << "char: impossible\n";
-    else if (!std::isprint(static_cast<char>(d)))
+    else if (!std::isprint(static_cast<unsigned char>(d)))
         std::cout << "char: non printable\n";
     else
         std::cout << "char: '" << static_cast<char>(d) << "'\n";
@@ -103,30 +120,30 @@ static void printDouble(const char *literal) {
 #define SPECIAL 4
 #define IMPOSSIBLE 5
 
-static int parseType(const char *literal) {
+static int parseType(const std::string& literal) {
     char *strEnd;
-    strtod(literal, &strEnd);
-    if ((strlen(literal) <= 3 && literal[0] == '\'' && literal[2] == '\'')
-        || (strlen(literal) == 1 && !std::isdigit(literal[0])))
+    std::strtod(literal.c_str(), &strEnd);
+    if ((literal.size() <= 3 && literal[0] == '\'' && literal[2] == '\'')
+        || (literal.size() == 1 && !std::isdigit(literal[0])))
         return CHAR;
-    if (!strcmp(literal, "nan") || !strcmp(literal, "nanf")
-        || !strcmp(literal, "-inf") || !strcmp(literal, "-inff")
-        || !strcmp(literal, "+inf") || !strcmp(literal, "+inff"))
+    if (literal == "nan" || literal == "nanf"
+        ||literal == "-inf" || literal == "-inff"
+        || literal == "+inf" || literal ==  "+inff")
         return SPECIAL;
-    const char *dotPos = strchr(literal, '.');
-    if (dotPos && dotPos != literal && std::isdigit(*(dotPos - 1)) && std::isdigit(*(dotPos + 1))) {
+     size_t dotPos = literal.find('.');
+    if (dotPos != std::string::npos && dotPos != 0 && std::isdigit(literal[dotPos - 1]) && literal.size() > dotPos + 1 && std::isdigit(literal[dotPos + 1])) {
         if (strlen(strEnd) == 1 && strEnd[0] == 'f')
             return FLOAT;
         else if (strlen(strEnd) == 0)
             return DOUBLE;
     }
-    else if (!dotPos && hasDigit(literal) && !strlen(strEnd))
+    else if (dotPos == std::string::npos && hasDigit(literal) && !strlen(strEnd))
         return INT;
     return IMPOSSIBLE;
 }
 
-void    ScalarConverter::convert(const char *literal) {
-    void (*func[])(const char *) = {
+void    ScalarConverter::convert(const std::string &literal) {
+    void (*func[])(const std::string&) = {
         &printChar,
         &printInt,
         &printFloat,
