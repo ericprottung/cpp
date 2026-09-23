@@ -2,7 +2,7 @@
 #include <cctype>
 #include <iostream>
 
-void addOne(int i) {
+void addOne(int &i) {
     i +=1;
 }
 

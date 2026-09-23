@@ -25,11 +25,18 @@ class Array {
                 throw std::exception();
            return arr[index]; 
         }
+        const T &operator[](const unsigned int index) const {
+            if (index >= len)
+                throw std::exception();
+           return arr[index]; 
+        }
         Array &operator=(const Array &other) {
+            if (this == &other)
+                return *this;
             if (arr != NULL)
                 delete[] arr;
             arr = new T[other.len]();
-            for (int i = 0; i < other.len; i++) {
+            for (unsigned int i = 0; i < other.len; i++) {
                 arr[i] = other.arr[i];
             }
             len = other.len;
