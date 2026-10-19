@@ -1,6 +1,6 @@
 NAME = bureaucrat
-CC = c++
-CFLAGS =  -MMD -I. -std=c++98
+CXX = c++
+CXXFLAGS =  -MMD -I. -std=c++98
 SRC = Bureaucrat.cpp AForm.cpp main.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp Intern.cpp
 OBJ = $(SRC:%.cpp=%.o)
 DEP = $(OBJ:%.o=%.d)
@@ -8,10 +8,10 @@ DEP = $(OBJ:%.o=%.d)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(DEP)

@@ -1,5 +1,4 @@
 #include "iter.hpp"
-#include <cctype>
 #include <iostream>
 
 void addOne(int &i) {
@@ -24,7 +23,7 @@ int main() {
     ::iter(arr, 8, addOne);
     ::iter(arr, 8, printInt);
     
-    std::string strArr[] = {"hi", "who", "are", "you", "?"};
+    const std::string strArr[] = {"hi", "who", "are", "you", "?"};
     ::iter(strArr, 5, changeStr);
     ::iter(strArr, 5, printStr);
     

@@ -1,6 +1,6 @@
 NAME = harlfilter
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -MMD -I. -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -MMD -I. -std=c++98
 SRC = main.cpp Harl.cpp
 OBJ = $(SRC:%.cpp=%.o)
 DEP = $(OBJ:%.o=%.d)
@@ -8,10 +8,10 @@ DEP = $(OBJ:%.o=%.d)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(DEP)
