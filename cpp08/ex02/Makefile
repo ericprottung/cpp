@@ -1,7 +1,7 @@
 NAME = mutantstack
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -MMD -I. -std=c++98
-SRC = main.cpp MutantStack.cpp
+SRC = main.cpp
 OBJ = $(SRC:%.cpp=%.o)
 DEP = $(OBJ:%.o=%.d)
 

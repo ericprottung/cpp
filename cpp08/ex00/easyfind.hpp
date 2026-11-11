@@ -5,9 +5,16 @@
 #include <stdexcept>
 
 template<typename T>
-
 typename T::iterator easyfind(T &container, int find) {
     typename T::iterator i = std::find(container.begin(), container.end(), find);
+    if (i != container.end())
+        return i;
+    throw std::runtime_error("Integer not found!");
+}
+
+template<typename T>
+typename T::const_iterator easyfind(const T &container, int find) {
+    typename T::const_iterator i = std::find(container.begin(), container.end(), find);
     if (i != container.end())
         return i;
     throw std::runtime_error("Integer not found!");

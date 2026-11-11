@@ -1,4 +1,4 @@
-NAME = whatever
+NAME = easyfind
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -MMD -I. -std=c++98
 SRC = main.cpp
