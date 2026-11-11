@@ -27,7 +27,7 @@ int main()
     std::cout << new_sp.shortestSpan() << std::endl;
     std::cout << new_sp.longestSpan() << std::endl;
 
-    std::cout << "=== addNumbers with std::list ===" << std::endl;
+    std::cout << "addNumbers with std::list" << std::endl;
     std::list<int> lst;
     lst.push_back(100);
     lst.push_back(-50);
@@ -36,13 +36,13 @@ int main()
     lsp.addNumbers(lst.begin(), lst.end());
     std::cout << lsp.shortestSpan() << " " << lsp.longestSpan() << std::endl;
 
-    std::cout << "=== INT_MIN / INT_MAX ===" << std::endl;
+    std::cout << "Int Min/Int Max" << std::endl;
     Span ext(2);
     ext.addNumber(INT_MIN);
     ext.addNumber(INT_MAX);
     std::cout << ext.shortestSpan() << " " << ext.longestSpan() << std::endl;
 
-    std::cout << "=== Error cases ===" << std::endl;
+    std::cout << "Error Cases" << std::endl;
     try {
         sp.addNumber(42);
     } catch (std::exception &e) {

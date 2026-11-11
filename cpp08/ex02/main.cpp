@@ -4,7 +4,7 @@
 #include <vector>
 
 static void subjectTest() {
-    std::cout << "=== Subject test (MutantStack) ===" << std::endl;
+    std::cout << "subject test MutantStack" << std::endl;
     MutantStack<int> mstack;
     mstack.push(5);
     mstack.push(17);
@@ -29,7 +29,7 @@ static void subjectTest() {
 }
 
 static void listTest() {
-    std::cout << "=== Same test with std::list (expected output) ===" << std::endl;
+    std::cout << "same with std::list" << std::endl;
     std::list<int> lst;
     lst.push_back(5);
     lst.push_back(17);
@@ -54,7 +54,7 @@ static void listTest() {
 }
 
 static void extraTests() {
-    std::cout << "=== Extra tests ===" << std::endl;
+    std::cout << "extra tests" << std::endl;
 
     MutantStack<int> empty;
     std::cout << "empty: begin == end -> " << (empty.begin() == empty.end()) << std::endl;
